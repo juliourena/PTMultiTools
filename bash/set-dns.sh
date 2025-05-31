@@ -4,11 +4,11 @@
 #
 #   Añade entradas DNS en /etc/hosts para una IP dada, y/o limpia entradas personalizadas.
 #   Opciones:
-#     -D      Modo Domain Controller (genera FQDN, dominio corto y host corto)
+#     -d      Modo Domain Controller (genera FQDN, dominio corto y host corto)
 #     -c      Limpia las entradas personalizadas previas (todo después de '# Others')
 #
 # Uso:
-#   sudo $0 [-D] [-c] <IP> <FQDN> [<alias1> <alias2> …]
+#   sudo $0 [-d] [-c] <IP> <FQDN> [<alias1> <alias2> …]
 #   sudo $0 -c    # Solo limpia entradas previas
 #
 # Ejemplos:
@@ -16,7 +16,7 @@
 #   sudo $0 -c
 #
 #   # modo DC, limpia antes de añadir
-#   sudo $0 -c -D 10.129.104.26 DC.PUPPY.HTB
+#   sudo $0 -c -d 10.129.104.26 DC.PUPPY.HTB
 #
 #   # modo manual, sin limpiar
 #   sudo $0 10.129.104.26 DC.PUPPY.HTB PUPPY.HTB DC
@@ -39,8 +39,8 @@ echo -e "${YELLOW}***********************************************${NC}"
 echo ""
 
 usage() {
-  echo -e "${YELLOW}Uso:${NC} sudo $0 [-D] [-c] <IP> <FQDN> [<alias1> <alias2> …]"
-  echo -e "  -D    Modo Domain Controller (añade FQDN, dominio corto y host corto)"
+  echo -e "${YELLOW}Uso:${NC} sudo $0 [-d] [-c] <IP> <FQDN> [<alias1> <alias2> …]"
+  echo -e "  -d    Modo Domain Controller (añade FQDN, dominio corto y host corto)"
   echo -e "  -c    Limpia las entradas personalizadas previas (todo después de '# Others')"
   exit 1
 }
@@ -56,9 +56,9 @@ dc_mode=false
 clean_mode=false
 
 # Parsear opciones
-while getopts ":Dc" opt; do
+while getopts ":dc" opt; do
   case "$opt" in
-    D) dc_mode=true ;;
+    d) dc_mode=true ;;
     c) clean_mode=true ;;
     *) usage ;;
   esac
