@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# scan.sh
+# escanear.sh
 #
 #   Scans TCP and UDP ports on an IP, extracts open ports, and runs service/version detection.
 #   Performs a total of 4 scans:
@@ -10,10 +10,10 @@
 #     4) UDP scan with -sC -sV on detected open UDP ports
 #
 # Usage:
-#   sudo ./scan.sh <IP>
+#   sudo ./escanear.sh <IP>
 #
 # Example:
-#   sudo ./scan.sh 10.129.104.26
+#   sudo ./escanear.sh 10.129.104.26
 #
 # Author: Plaintext
 # Repo:   https://github.com/juliourena/PTMultiTools/bash/escanear.sh
